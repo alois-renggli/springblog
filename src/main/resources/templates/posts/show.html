@@ -5,9 +5,16 @@
 </head>
 <body>
 <th:block th:include="fragments/navbar :: navbar"></th:block>
-<!--<div th:text="${post}">-->
-    <h4>Title: <span th:text="${post.title}"></span></h4>
-    <h4>Body: <span th:text="${post.body}"></span></h4>
-<!--</div>-->
+
+<div class="row justify-content-center">
+    <div class="card " style="width: 18rem">
+        <div class="card-body" >
+            <p class="card-title"><b>Title:</b> <span class="font-italic" th:text="${post.title}"></span></p>
+            <p class="card-text"><b>Body:</b> <span th:text="${post.body}"></span></p>
+            <a href="/posts" class="card-link">Post Index</a>
+            <!--<a href="#" class="card-link">Another link</a>-->
+        </div>
+    </div>
+</div>
 </body>
 </html>
