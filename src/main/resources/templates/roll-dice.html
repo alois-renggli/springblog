@@ -3,19 +3,19 @@
 <head>
     <th:block th:include="fragments/header :: header('Roll Dice Page')"></th:block>
 </head>
-<body>
+<body class="m-1">
 <th:block th:include="fragments/navbar :: navbar"></th:block>
 
 <!--<div th:if="${numberGuess == null}">-->
 <div>
     <h1>Guess a number from 1 to 6:</h1>
-    <ol>
-        <a href="/roll-dice/1"><h2><li></li></h2></a>
-        <a href="/roll-dice/2"><h2><li></li></h2></a>
-        <a href="/roll-dice/3"><h2><li></li></h2></a>
-        <a href="/roll-dice/4"><h2><li></li></h2></a>
-        <a href="/roll-dice/5"><h2><li></li></h2></a>
-        <a href="/roll-dice/6"><h2><li></li></h2></a>
+    <ol class="row border">
+        <a href="/roll-dice/1"><h4><li class="col-2 font-weight-bold"></li></h4></a>
+        <a href="/roll-dice/2"><h4><li class="col-2 font-weight-bold"></li></h4></a>
+        <a href="/roll-dice/3"><h4><li class="col-2 font-weight-bold"></li></h4></a>
+        <a href="/roll-dice/4"><h4><li class="col-2 font-weight-bold"></li></h4></a>
+        <a href="/roll-dice/5"><h4><li class="col-2 font-weight-bold"></li></h4></a>
+        <a href="/roll-dice/6"><h4><li class="col-2 font-weight-bold"></li></h4></a>
     </ol>
 </div>
 <div class="row">

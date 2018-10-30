@@ -21,7 +21,7 @@ public class RollDice {
 
         int  n = rand.nextInt(6) + 1;
         List<Integer> diceRolls = new ArrayList<>();
-        for(int i = 0; i <= 10; i++){
+        for(int i = 0; i <= 11; i++){
             diceRolls.add(rand.nextInt(6) + 1);
 //            System.out.println(rand.nextInt(6) + 1);
         }

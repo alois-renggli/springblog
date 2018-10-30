@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/header :: header('Show Page')"></th:block>
+</head>
+<body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
+<!--<div th:text="${post}">-->
+    <h4>Title: <span th:text="${post.title}"></span></h4>
+    <h4>Body: <span th:text="${post.body}"></span></h4>
+<!--</div>-->
+</body>
+</html>

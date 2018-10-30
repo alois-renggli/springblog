@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/header :: header('Index Page')"></th:block>
+</head>
+<body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
+<div class="row">
+
+    <div th:each="post: ${postings}" class="col-3 border">
+            <h4>Title: <span th:text="${post.title}"></span></h4>
+            <h4>Body: <span th:text="${post.body}"></span></h4>
+    </div>
+</div>
+</body>
+</html>
