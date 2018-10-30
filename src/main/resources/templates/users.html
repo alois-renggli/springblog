@@ -4,10 +4,13 @@
     <th:block th:include="fragments/header :: header('Users Page')"></th:block>
 </head>
 <body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
+
 <h1>List of current users:</h1>
 <div th:each="item : ${users}">
     <p th:text="${item}" />
 </div>
+<th:block th:include="fragments/footer :: footer"></th:block>
 
 </body>
 </html>

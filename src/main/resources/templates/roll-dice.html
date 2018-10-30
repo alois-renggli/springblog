@@ -4,8 +4,10 @@
     <th:block th:include="fragments/header :: header('Roll Dice Page')"></th:block>
 </head>
 <body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
 
-<div th:if="${numberGuess == null}">
+<!--<div th:if="${numberGuess == null}">-->
+<div>
     <h1>Guess a number from 1 to 6:</h1>
     <ol>
         <a href="/roll-dice/1"><h2><li></li></h2></a>
@@ -16,17 +18,24 @@
         <a href="/roll-dice/6"><h2><li></li></h2></a>
     </ol>
 </div>
+<div class="row">
 
-<div th:if="${numberGuess > 0}">
-    <h1>Your guess was <span th:text="${numberGuess}"></span></h1>
-    <h1>The correct number is <span th:text="${diceRoll}"></span></h1>
-    <h1>
-        <span th:if="${numberGuess == diceRoll}">YOU GUESSED RIGHT!!!</span>
-        <span th:if="${numberGuess != diceRoll}">WRONG GUESS</span>
-    </h1>
+<div th:each="roll: ${diceRolls}" class="col-3 border">
+    <div th:if="${numberGuess > 0}">
+        <h4>Your guess was <span th:text="${numberGuess}"></span></h4>
+        <h4>The correct number is <span th:text="${roll}"></span></h4>
+        <h4>
+            <span th:if="${numberGuess == roll}" class="text-success">YOU GUESSED RIGHT!!!</span>
+            <span th:if="${numberGuess != roll}" class="text-warning">WRONG GUESS</span>
+        </h4>
+    </div>
+
+</div>
+
 </div>
 
 
+<th:block th:include="fragments/footer :: footer"></th:block>
 
 </body>
 </html>

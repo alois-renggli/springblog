@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -16,9 +18,16 @@ public class RollDice {
     public String guessNumber(@PathVariable int numberGuess, Model vModel) {
         Random rand = new Random();
 
+
         int  n = rand.nextInt(6) + 1;
-        vModel.addAttribute("diceRoll", n);
+        List<Integer> diceRolls = new ArrayList<>();
+        for(int i = 0; i <= 10; i++){
+            diceRolls.add(rand.nextInt(6) + 1);
+//            System.out.println(rand.nextInt(6) + 1);
+        }
+//        vModel.addAttribute("diceRoll", n);
         vModel.addAttribute("numberGuess", numberGuess);
+        vModel.addAttribute("diceRolls", diceRolls);
         return "roll-dice";
     }
 }
