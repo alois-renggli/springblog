@@ -6,10 +6,13 @@
 <body>
 <th:block th:include="fragments/navbar :: navbar"></th:block>
 <div class="row">
-
-    <div th:each="post: ${postings}" class="col-3 border">
-            <h4>Title: <span th:text="${post.title}"></span></h4>
-            <h4>Body: <span th:text="${post.body}"></span></h4>
+    <div class="card" style="width: 18rem;" th:each="post: ${postings}">
+        <div class="card-body" >
+            <p class="card-title"><b>Title:</b> <span class="font-italic" th:text="${post.title}"></span></p>
+            <p class="card-text"><b>Body:</b> <span th:text="${post.body}"></span></p>
+            <a href="/posts/4" class="card-link">Post Link</a>
+            <!--<a href="#" class="card-link">Another link</a>-->
+        </div>
     </div>
 </div>
 </body>

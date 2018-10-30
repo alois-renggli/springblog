@@ -8,30 +8,29 @@
 
 <!--<div th:if="${numberGuess == null}">-->
 <div>
-    <h1>Guess a number from 1 to 6:</h1>
-    <ol class="row border">
-        <a href="/roll-dice/1"><h4><li class="col-2 font-weight-bold"></li></h4></a>
-        <a href="/roll-dice/2"><h4><li class="col-2 font-weight-bold"></li></h4></a>
-        <a href="/roll-dice/3"><h4><li class="col-2 font-weight-bold"></li></h4></a>
-        <a href="/roll-dice/4"><h4><li class="col-2 font-weight-bold"></li></h4></a>
-        <a href="/roll-dice/5"><h4><li class="col-2 font-weight-bold"></li></h4></a>
-        <a href="/roll-dice/6"><h4><li class="col-2 font-weight-bold"></li></h4></a>
-    </ol>
+    <h1 class="text-center">Choose a number from 1 to 6:</h1>
+    <ul class="nav nav-pills justify-content-center">
+        <h4 class="mx-3"><li class="nav-item font-weight-bold"><a href="/roll-dice/1" class="nav-link active">1</a></li></h4>
+        <h4 class="mx-3"><li class="nav-item font-weight-bold"><a href="/roll-dice/2" class="nav-link active">2</a></li></h4>
+        <h4 class="mx-3"><li class="nav-item font-weight-bold"><a href="/roll-dice/3" class="nav-link active">3</a></li></h4>
+        <h4 class="mx-3"><li class="nav-item font-weight-bold"><a href="/roll-dice/4" class="nav-link active">4</a></li></h4>
+        <h4 class="mx-3"><li class="nav-item font-weight-bold"><a href="/roll-dice/5" class="nav-link active">5</a></li></h4>
+        <h4 class="mx-3"><li class="nav-item font-weight-bold"><a href="/roll-dice/6" class="nav-link active">6</a></li></h4>
+    </ul>
 </div>
-<div class="row">
-
-<div th:each="roll: ${diceRolls}" class="col-3 border">
-    <div th:if="${numberGuess > 0}">
-        <h4>Your guess was <span th:text="${numberGuess}"></span></h4>
-        <h4>The correct number is <span th:text="${roll}"></span></h4>
-        <h4>
-            <span th:if="${numberGuess == roll}" class="text-success">YOU GUESSED RIGHT!!!</span>
-            <span th:if="${numberGuess != roll}" class="text-warning">WRONG GUESS</span>
-        </h4>
+<div class="row justify-content-center">
+    <div class="card col-4" style="width: 18rem;" th:each="roll: ${diceRolls}">
+        <div class="card-body" th:if="${numberGuess > 0}">
+            <p class="card-subtitle mb-2 text-muted">Your guess was <span class="font-italic" th:text="${numberGuess}"></span></p>
+            <p class="card-title">The correct number is <span class="font-bold" th:text="${roll}"></span></p>
+            <p class="card-text">
+                <span th:if="${numberGuess == roll}" class="text-success">YOU GUESSED RIGHT!!!</span>
+                <span th:if="${numberGuess != roll}" class="text-warning">WRONG GUESS</span>
+            </p>
+            <!--<a href="/posts/4" class="card-link">Post Link</a>-->
+            <!--<a href="#" class="card-link">Another link</a>-->
+        </div>
     </div>
-
-</div>
-
 </div>
 
 
