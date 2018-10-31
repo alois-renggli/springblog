@@ -1,13 +1,11 @@
 package com.codeup.springblog.Controllers;
 
 
+import com.codeup.springblog.Post;
 import com.codeup.springblog.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +31,16 @@ public class PostController {
         return "posts/show";
     }
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
-    public String postsCreateGet() {
-        return "view the form for creating a post";
+    public String showPostForm(Post post, Model vModel) {
+        vModel.addAttribute("post", post);
+        return "posts/create";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String postsCreatePost() {
+    public String createPost(@ModelAttribute Post post) {
+        System.out.println(post.getTitle());
+        System.out.println(post.getBody());
+        postService.save(post);
         return "create a new post";
     }
 }
