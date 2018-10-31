@@ -10,8 +10,7 @@
         <div class="card-body" >
             <p class="card-title"><b>Title:</b> <span class="font-italic" th:text="${post.title}"></span></p>
             <p class="card-text"><b>Body:</b> <span th:text="${post.body}"></span></p>
-            <a href="/posts/4" class="card-link">Post Link</a>
-            <!--<a href="#" class="card-link">Another link</a>-->
+            <a th:href="@{'/posts/' + ${post.id}}" class="card-link">Post Link</a>
         </div>
     </div>
 </div>

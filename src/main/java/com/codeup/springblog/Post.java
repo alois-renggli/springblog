@@ -7,10 +7,15 @@ public class Post {
 
     public Post() {
     }
-
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
+    }
+
+    public Post(String title, String body, int id) {
+        this.title = title;
+        this.body = body;
+        this.id = id;
     }
 
     public String getTitle() {

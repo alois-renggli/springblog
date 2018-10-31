@@ -6,9 +6,9 @@
 <body>
 <th:block th:include="fragments/navbar :: navbar"></th:block>
 
-<h1>List of current users:</h1>
+<h1 class="text-center">List of current users:</h1>
 <div th:each="item : ${users}">
-    <p th:text="${item}" />
+    <p th:text="${item}" class="text-center"></p>
 </div>
 <th:block th:include="fragments/footer :: footer"></th:block>
 

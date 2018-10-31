@@ -31,12 +31,12 @@ public class PostService {
     }
 
     private void createPosts() {
-        posts.add(new Post("Post 1 Example", "This is the example body for Post 1."));
-        posts.add(new Post("Post 2 Example", "This is the example body for Post 2."));
-        posts.add(new Post("Post 3 Example", "This is the example body for Post 3."));
-        posts.add(new Post("Post 4 Example", "This is the example body for Post 4."));
-        posts.add(new Post("Post 5 Example", "This is the example body for Post 5."));
-        posts.add(new Post("Post 6 Example", "This is the example body for Post 6."));
+        posts.add(new Post("Post 1 Example", "This is the example body for Post 1.", 1));
+        posts.add(new Post("Post 2 Example", "This is the example body for Post 2.", 2));
+        posts.add(new Post("Post 3 Example", "This is the example body for Post 3.", 3));
+        posts.add(new Post("Post 4 Example", "This is the example body for Post 4.", 4));
+        posts.add(new Post("Post 5 Example", "This is the example body for Post 5.", 5));
+        posts.add(new Post("Post 6 Example", "This is the example body for Post 6.", 6));
 
     }
 }

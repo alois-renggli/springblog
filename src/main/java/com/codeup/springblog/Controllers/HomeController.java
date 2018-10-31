@@ -1,4 +1,4 @@
-package com.codeup.springblog;
+package com.codeup.springblog.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @GetMapping("/home")
+    @GetMapping("/")
     public String sayHello() {
         return "home";
     }
