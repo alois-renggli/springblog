@@ -7,11 +7,14 @@
 <th:block th:include="fragments/navbar :: navbar"></th:block>
 <div class="row justify-content-center">
     <div class="card m-1" style="width: 18rem;" th:each="post: ${postings}">
-        <div class="card-body" >
+        <ul class="card-body d-flex flex-column" >
             <p class="card-title"><b>Title:</b> <span class="font-italic" th:text="${post.title}"></span></p>
             <p class="card-text"><b>Body:</b> <span th:text="${post.body}"></span></p>
-            <a th:href="@{'/posts/' + ${post.id}}" class="card-link">Post Link</a>
-        </div>
+            <ul class="nav nav-pills justify-content-center mt-auto">
+                <span><li class="nav-item font-weight-bold"><a th:href="@{'/posts/' + ${post.id}}" class="nav-link active">Post Link</a></li></span>
+                <span class="ml-3"><li class="nav-item font-weight-bold"><a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="nav-link active">Edit Post</a></li></span>
+            </ul>
+        </ul>
     </div>
 </div>
 <th:block th:include="fragments/footer :: footer"></th:block>

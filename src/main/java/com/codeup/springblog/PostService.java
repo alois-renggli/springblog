@@ -26,6 +26,10 @@ public class PostService {
         return post;
     }
 
+    public Post edit(Post post){
+        return posts.set(post.getId() - 1, post);
+    }
+
     public Post findOne(int id) {
         return posts.get(id - 1);
     }

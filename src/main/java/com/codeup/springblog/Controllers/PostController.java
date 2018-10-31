@@ -47,4 +47,11 @@ public class PostController {
         vModel.addAttribute("post", postService.findOne(id));
         return "posts/edit";
     }
+
+    @RequestMapping(path = "/posts/{id}/edit", method = RequestMethod.POST)
+    public String updatePost(@ModelAttribute Post post) {
+        Post updatedPost = postService.edit(post);
+        return "redirect:/posts/" + updatedPost.getId();
+    }
+
 }

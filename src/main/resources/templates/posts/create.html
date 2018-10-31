@@ -6,24 +6,29 @@
 <body>
 <th:block th:include="fragments/navbar :: navbar"></th:block>
 <div class="row justify-content-center">
-    <div class="card m-1" style="width: 18rem;">
+    <div class="card m-1 w-75" style="width: 18rem;">
         <div class="card-body" >
-            <!--<p class="card-title"><b>Title:</b> <span class="font-italic" th:text="${post.title}"></span></p>-->
-            <!--<p class="card-text"><b>Body:</b> <span th:text="${post.body}"></span></p>-->
-            <!--<a th:href="@{'/posts/' + ${post.id}}" class="card-link">Post Link</a>-->
-
-
-            <form th:action="@{/posts/create}" method="post" th:object="${post}">
-                Title:
-                <input th:field="*{title}" />
-                <br />
-                Body:
-                <input th:field="*{body}" />
-                <br />
-                <input type="submit" />
+            <form th:action="@{/posts/'${post.id}'/edit}" method="post" th:object="${post}" class="mb-3">
+                <div class="form-group">
+                    <label for="title">New Title:</label>
+                    <input th:field="*{title}" id="title" class="form-control input-lg" />
+                </div>
+                <div class="form-group">
+                    <label for="body">New Body:</label>
+                    <input th:field="*{body}" id="body" class="form-control input-lg"/>
+                </div>
+                <input type="hidden" th:field="*{id}" class="input-lg"/>
+                <ul class="nav nav-pills justify-content-center form-group">
+                    <li class="nav-item font-weight-bold w-75"><button type="submit" class="nav-link active w-100 btn btn-warning font-weight-bold text-light">Submit</button></li>
+                </ul>
             </form>
+            <ul class="nav nav-pills justify-content-center mt-auto">
+                <span><li class="nav-item font-weight-bold"><a th:href="@{'/posts'}" class="nav-link active">All Posts</a></li></span>
+                <span class="ml-3"><li class="nav-item font-weight-bold"><a th:href="@{'/posts/create'}" class="nav-link active">Refresh Page</a></li></span>
+            </ul>
         </div>
     </div>
+
 </div>
 <th:block th:include="fragments/footer :: footer"></th:block>
 
