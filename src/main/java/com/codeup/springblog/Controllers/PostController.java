@@ -38,9 +38,13 @@ public class PostController {
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String createPost(@ModelAttribute Post post) {
-        System.out.println(post.getTitle());
-        System.out.println(post.getBody());
-        postService.save(post);
-        return "create a new post";
+        Post newPost = postService.save(post);
+        return "redirect:/posts/" + newPost.getId();
+    }
+
+    @RequestMapping(path = "/posts/{id}/edit", method = RequestMethod.GET)
+    public String editPost(@PathVariable int id, Model vModel) {
+        vModel.addAttribute("post", postService.findOne(id));
+        return "posts/edit";
     }
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/header :: header('Create Post Page')"></th:block>
+</head>
+<body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
+<div class="row justify-content-center">
+    <div class="card m-1" style="width: 18rem;">
+        <div class="card-body" >
+            <!--<p class="card-title"><b>Title:</b> <span class="font-italic" th:text="${post.title}"></span></p>-->
+            <!--<p class="card-text"><b>Body:</b> <span th:text="${post.body}"></span></p>-->
+            <!--<a th:href="@{'/posts/' + ${post.id}}" class="card-link">Post Link</a>-->
+
+
+            <form th:action="@{/posts/'${post.id}'/create}" method="post" th:object="${post}">
+                Title:
+                <input th:field="*{title}" />
+                <br />
+                New Body:
+                <input th:field="*{body}" />
+                <br />
+                <input type="hidden" th:field="*{id}" />
+                <input type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
+<th:block th:include="fragments/footer :: footer"></th:block>
+
+</body>
+</html>
