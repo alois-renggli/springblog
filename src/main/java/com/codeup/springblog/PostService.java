@@ -36,20 +36,18 @@ public class PostService {
     public void delete(long id){
         Post deletedPost = postsRepo.findOne(id);
         Iterable<Post> updatedPosts = postsRepo.findAll();
-        System.out.println("Old Posts are:" + updatedPosts);
        for(Post currentPost : updatedPosts){
            if (currentPost.getId() == deletedPost.getId()){
                postsRepo.delete(currentPost.getId());
            }
        }
-        System.out.println("New Posts are:" + updatedPosts);
     }
 
     public Post findOne(long id) {
-
         return postsRepo.findOne(id);
     }
 
-//    private void createPosts() {
-//    }
+    public List<Post> search(String string){
+        return postsRepo.findAllByBodyContainsOrTitleContains(string, string);
+    }
 }

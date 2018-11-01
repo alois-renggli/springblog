@@ -2,6 +2,7 @@ package com.codeup.springblog.Controllers;
 
 
 import com.codeup.springblog.Post;
+import com.codeup.springblog.PostRepository;
 import com.codeup.springblog.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,4 +61,10 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    @RequestMapping(path = "/posts/search/{string}", method = RequestMethod.GET)
+    public String search(@PathVariable String string, Model vModel) {
+        System.out.println(postService.search(string));
+        vModel.addAttribute("postings", postService.search(string));
+        return "posts/index";
+    }
 }
