@@ -26,7 +26,7 @@ public class PostController {
     }
 
     @RequestMapping(path = "/posts/{id}", method = RequestMethod.GET)
-    public String postsId(@PathVariable int id, Model vModel) {
+    public String postsId(@PathVariable long id, Model vModel) {
         vModel.addAttribute("post", postService.findOne(id));
         return "posts/show";
     }
@@ -39,11 +39,11 @@ public class PostController {
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String createPost(@ModelAttribute Post post) {
         Post newPost = postService.save(post);
-        return "redirect:/posts/" + newPost.getId();
+        return "redirect:/posts";
     }
 
     @RequestMapping(path = "/posts/{id}/edit", method = RequestMethod.GET)
-    public String editPost(@PathVariable int id, Model vModel) {
+    public String editPost(@PathVariable long id, Model vModel) {
         vModel.addAttribute("post", postService.findOne(id));
         return "posts/edit";
     }
@@ -55,9 +55,9 @@ public class PostController {
     }
 
     @RequestMapping(path = "/posts/{id}/delete", method = RequestMethod.DELETE)
-    public String deletePost(@PathVariable int id) {
-        postService.delete(postService.findOne(id));
-        return "redirect:/posts/";
+    public String deletePost(@PathVariable long id) {
+        postService.delete(id);
+        return "redirect:/posts";
     }
 
 }

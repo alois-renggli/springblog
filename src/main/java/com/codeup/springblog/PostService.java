@@ -9,44 +9,47 @@ import java.util.List;
 @Service
 public class PostService {
 
-    private List<Post> posts;
+//    private List<Post> posts;
+    private final PostRepository postsRepo;
 
-    public PostService() {
-        posts = new ArrayList<>();
-        createPosts();
+    public PostService(PostRepository postsRepo) {
+        this.postsRepo = postsRepo;
+
+//        posts = new ArrayList<>();
+//        createPosts();
     }
 
-    public List<Post> findAll() {
-        return posts;
+    public Iterable<Post> findAll() {
+        return postsRepo.findAll();
     }
 
     public Post save(Post post) {
-        post.setId(posts.size() + 1);
-        posts.add(post);
-        return post;
+//        post.setId(posts.size() + 1);
+//        posts.add(post);
+        return postsRepo.save(post);
     }
 
     public Post edit(Post post){
-        return posts.set(post.getId() - 1, post);
+        return postsRepo.save(post);
     }
 
-    public List<Post> delete(Post post){
-        Post deletedPost = post;
-        List<Post> updatedPosts = posts;
-        System.out.println("Old Posts are:" + posts);
+    public void delete(long id){
+        Post deletedPost = postsRepo.findOne(id);
+        Iterable<Post> updatedPosts = postsRepo.findAll();
+        System.out.println("Old Posts are:" + updatedPosts);
        for(Post currentPost : updatedPosts){
-           if (currentPost == deletedPost){
-               updatedPosts.remove(currentPost);
+           if (currentPost.getId() == deletedPost.getId()){
+               postsRepo.delete(currentPost.getId());
            }
        }
         System.out.println("New Posts are:" + updatedPosts);
-        return posts = updatedPosts;
     }
 
-    public Post findOne(int id) {
-        return posts.get(id - 1);
+    public Post findOne(long id) {
+
+        return postsRepo.findOne(id);
     }
 
-    private void createPosts() {
-    }
+//    private void createPosts() {
+//    }
 }
