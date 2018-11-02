@@ -1,10 +1,10 @@
-package com.codeup.springblog;
+package com.codeup.springblog.Services;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.codeup.springblog.Models.Post;
+import com.codeup.springblog.Repositories.PostRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
