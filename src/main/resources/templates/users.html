@@ -7,9 +7,20 @@
 <th:block th:include="fragments/navbar :: navbar"></th:block>
 
 <h1 class="text-center">List of current users:</h1>
-<div th:each="item : ${users}">
-    <p th:text="${item}" class="text-center"></p>
+<div class="row justify-content-center">
+    <div class="card m-1" style="width: 18rem" th:each="user : ${users}">
+        <div class="card-body">
+            <p class="card-title"><b>User ID:</b> <span class="font-bold" th:text="${user.id}"></span></p>
+            <p class="card-text"><b>Username:</b> <span th:text="${user.username}"></span></p>
+            <p class="card-text"><b>Email:</b> <span th:text="${user.email}"></span></p>
+            <!--<ul class="nav nav-pills justify-content-center mt-auto">-->
+                <!--<span><li class="nav-item font-weight-bold"><a href="/posts" class="nav-link active">All Posts</a></li></span>-->
+                <!--<span class="ml-3"><li class="nav-item font-weight-bold"><a th:href="@{'/posts/' + ${post.id} + '/edit'}" class="nav-link active">Edit Post</a></li></span>-->
+            <!--</ul>-->
+        </div>
+    </div>
 </div>
+
 <th:block th:include="fragments/footer :: footer"></th:block>
 
 </body>

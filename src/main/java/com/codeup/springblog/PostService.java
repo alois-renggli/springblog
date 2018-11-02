@@ -1,6 +1,7 @@
 package com.codeup.springblog;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class PostService {
 
 //        posts = new ArrayList<>();
 //        createPosts();
+
     }
 
     public Iterable<Post> findAll() {
