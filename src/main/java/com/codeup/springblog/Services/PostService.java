@@ -4,8 +4,10 @@ package com.codeup.springblog.Services;
 import com.codeup.springblog.Models.Post;
 import com.codeup.springblog.Models.User;
 import com.codeup.springblog.Repositories.PostRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,8 +48,16 @@ public class PostService {
        }
     }
 
-    public Iterable<Post> userPosts(User user) {
-        return postsRepo.findAllByUserContains(user);
+    public Iterable<Post> userPosts() {
+        Iterable<Post> allPosts = findAll();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Post> userPostList = new ArrayList<>();
+        for(Post currentPost : allPosts){
+            if(currentPost.getUser().getId() == user.getId()){
+                userPostList.add(currentPost);
+            }
+        }
+        return userPostList;
     }
 
     public Post findOne(long id) {

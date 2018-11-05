@@ -77,9 +77,7 @@ public class PostController {
 
     @RequestMapping(path = "/posts/user-posts", method = RequestMethod.GET)
     public String userPosts(Model vModel) {
-//        System.out.println(postService.search(string));
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        vModel.addAttribute("postings", postService.userPosts(user));
+        vModel.addAttribute("postings", postService.userPosts());
         return "posts/index";
     }
 }

@@ -7,8 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface PostRepository  extends CrudRepository<Post, Long> {
-
-//    @Query("from Post where title=?1")
     List<Post> findAllByBodyContainsOrTitleContains(String string, String string2);
     List<Post> findAllByUserContains(User user);
 }
