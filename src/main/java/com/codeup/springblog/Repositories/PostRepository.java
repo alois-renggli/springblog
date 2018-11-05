@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface PostRepository  extends CrudRepository<Post, Long> {
     List<Post> findAllByBodyContainsOrTitleContains(String string, String string2);
-    List<Post> findAllByUserContains(User user);
 }

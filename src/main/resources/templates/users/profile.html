@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <th:block th:include="fragments/header :: header('Profile Page')"></th:block>
+</head>
+<body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
+<h1 class="text-center">Profile Page:</h1>
+
+<div class="row justify-content-center" sec:authorize="isAuthenticated()">
+    <div class="card m-1" style="width: 18rem">
+        <div class="card-body">
+            <p class="card-title"><b>User ID:</b> <span class="font-italic" th:text="${#authentication.principal.id}"></span></p>
+            <p class="card-text"><b>Username:</b> <span th:text="${#authentication.principal.username}"></span></p>
+            <p class="card-text"><b>Email:</b> <span th:text="${#authentication.principal.email}"></span></p>
+
+            <ul class="nav nav-pills justify-content-center mt-auto">
+                <span><li class="nav-item font-weight-bold"><a href="/posts/user-posts" class="nav-link active">Posts</a></li></span>
+                <span class="ml-3"><li class="nav-item font-weight-bold"><a th:href="@{'/profile/edit'}" class="nav-link active">Edit Profile</a></li></span>
+            </ul>
+        </div>
+    </div>
+</div>
+<th:block th:include="fragments/footer :: footer"></th:block>
+
+</body>
+</html>
