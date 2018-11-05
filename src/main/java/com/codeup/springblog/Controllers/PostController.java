@@ -2,9 +2,11 @@ package com.codeup.springblog.Controllers;
 
 
 import com.codeup.springblog.Models.Post;
+import com.codeup.springblog.Models.User;
 import com.codeup.springblog.Services.PostService;
 import com.codeup.springblog.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +43,10 @@ public class PostController {
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String createPost(@ModelAttribute Post post) {
-        post.setUser(userRepository.findOne(1L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(userRepository.findOne(user.getId()));
         Post newPost = postService.save(post);
-        System.out.println(newPost.getUser().getUsername());
-        return "redirect:/posts";
+        return "redirect:/posts/" + newPost.getId();
     }
 
     @RequestMapping(path = "/posts/{id}/edit", method = RequestMethod.GET)
@@ -55,7 +57,8 @@ public class PostController {
 
     @RequestMapping(path = "/posts/{id}/edit", method = RequestMethod.POST)
     public String updatePost(@ModelAttribute Post post) {
-        post.setUser(userRepository.findOne(1L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        post.setUser(userRepository.findOne(user.getId()));
         Post updatedPost = postService.edit(post);
         return "redirect:/posts/" + updatedPost.getId();
     }
@@ -68,8 +71,15 @@ public class PostController {
 
     @RequestMapping(path = "/posts/search/{string}", method = RequestMethod.GET)
     public String search(@PathVariable String string, Model vModel) {
-        System.out.println(postService.search(string));
         vModel.addAttribute("postings", postService.search(string));
+        return "posts/index";
+    }
+
+    @RequestMapping(path = "/posts/user-posts", method = RequestMethod.GET)
+    public String userPosts(Model vModel) {
+//        System.out.println(postService.search(string));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        vModel.addAttribute("postings", postService.userPosts(user));
         return "posts/index";
     }
 }

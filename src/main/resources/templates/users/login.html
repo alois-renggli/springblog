@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="fragments/header :: header('Create Post Page')"></th:block>
+</head>
+<body>
+<th:block th:include="fragments/navbar :: navbar"></th:block>
+<h1 class="text-center">Log In:</h1>
+<h3 th:if="${param.error}" class="text-danger text-center">
+    Invalid Username and Password.
+</h3>
+<h3 th:if="${param.logout}" class="text-success text-center">
+    You have been logged out.
+</h3>
+<!--<form th:action="@{/login}" method="post">-->
+    <!--<label for="username">Username</label>-->
+    <!--<input id="username" name="username" type="text" />-->
+    <!--<label for="password">Password</label>-->
+    <!--<input id="password" name="password" type="password" />-->
+    <!--<input type="submit" value="Log In" />-->
+<!--</form>-->
+<div class="row justify-content-center">
+    <div class="card m-1 w-75" style="width: 18rem;">
+        <div class="card-body" >
+            <form th:action="@{/login}" method="POST" class="mb-3">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input id="username" name="username" class="form-control input-lg" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input id="password"  name="password" type="password" class="form-control input-lg"/>
+                </div>
+                <ul class="nav nav-pills justify-content-center form-group">
+                    <li class="nav-item font-weight-bold w-75"><button type="submit" class="nav-link active w-100 btn btn-warning font-weight-bold text-light">Log In</button></li>
+                </ul>
+            </form>
+            <ul class="nav nav-pills justify-content-center mt-auto">
+                <span><li class="nav-item font-weight-bold"><a th:href="@{'/posts'}" class="nav-link active">All Posts</a></li></span>
+                <span class="ml-3"><li class="nav-item font-weight-bold"><a th:href="@{'/login'}" class="nav-link active">Refresh Page</a></li></span>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<th:block th:include="fragments/footer :: footer"></th:block>
+
+</body>
+</html>

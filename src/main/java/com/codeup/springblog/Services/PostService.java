@@ -2,6 +2,7 @@ package com.codeup.springblog.Services;
 
 
 import com.codeup.springblog.Models.Post;
+import com.codeup.springblog.Models.User;
 import com.codeup.springblog.Repositories.PostRepository;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,10 @@ public class PostService {
                postsRepo.delete(currentPost.getId());
            }
        }
+    }
+
+    public Iterable<Post> userPosts(User user) {
+        return postsRepo.findAllByUserContains(user);
     }
 
     public Post findOne(long id) {
